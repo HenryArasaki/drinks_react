@@ -1,0 +1,35 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 85px;
+    position: sticky;
+    top: 0;
+    background-color: #EEF0F2;
+    align-items: center;
+
+    margin-bottom: 20px;
+
+    box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.title{
+    font-size: 55px;
+    white-space:nowrap;
+    margin-left: 20px;
+}
+
+.input{
+    margin-right: 35px;
+    padding: 4px 4px;
+    background-color: white;
+    background-image: url('../../assets/search_img.svg');
+    background-position: -44px 4px;
+    background-repeat: no-repeat;
+    background-size:70% 70%;
+}
+
+.input:focus{
+    background-image:none;
+
+}

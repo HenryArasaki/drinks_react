@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react"
 import styles from './style.module.css'
-export default function RecipeCard() {
+export default function RecipeCard(props) {
     const [drink, setDrink] = useState({})
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        fetch("https:www.thecocktaildb.com/api/json/v1/1/random.php", { method: "GET" })
+        fetch(`https:www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${props.drinkId}`, { method: "GET" })
             .then(response => response.json())
             .then(data => setDrink(data.drinks[0]))
-            // .then(data => console.log(data.drinks[0]))
+            // .then(data => console.log(data))
             .finally(() => setIsLoading(false))
 
-    }, [])
+    }, [drink])
+
+    function handleCardClick(){
+        //TODO link
+    }
 
 
     if (isLoading) {
@@ -21,7 +25,7 @@ export default function RecipeCard() {
         </div>)
     }
     return (
-        <div className={styles.card}>
+        <div className={styles.card} onClick={handleCardClick}>
             <h3 className={styles.titulo}>{drink.strDrink}</h3>
             <img className={styles.thumb} src={drink.strDrinkThumb} alt="drink thumb" />
         </div>)
