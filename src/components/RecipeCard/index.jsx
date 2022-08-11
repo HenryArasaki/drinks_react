@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import styles from './style.module.css'
+import {Link} from 'react-router-dom'
+
 export default function RecipeCard(props) {
     const [drink, setDrink] = useState({})
     const [isLoading, setIsLoading] = useState(true)
@@ -10,13 +12,7 @@ export default function RecipeCard(props) {
             .then(data => setDrink(data.drinks[0]))
             // .then(data => console.log(data))
             .finally(() => setIsLoading(false))
-
     }, [drink])
-
-    function handleCardClick(){
-        //TODO link
-    }
-
 
     if (isLoading) {
         return (<div className={styles.card}>
@@ -24,11 +20,10 @@ export default function RecipeCard(props) {
             <img src="../../assets/loading_img.svg" alt="loading" />
         </div>)
     }
+
     return (
-        <div className={styles.card} onClick={handleCardClick}>
+        <Link to={"/recipe/" + drink.idDrink} className={styles.card} >
             <h3 className={styles.titulo}>{drink.strDrink}</h3>
             <img className={styles.thumb} src={drink.strDrinkThumb} alt="drink thumb" />
-        </div>)
-
-
+        </Link>)
 }

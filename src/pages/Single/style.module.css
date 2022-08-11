@@ -1,0 +1,18 @@
+.container{
+
+}
+
+.loading_img{
+    height:40vh;
+    display: block;
+    margin: 200px auto;
+    filter: invert(100%) sepia(0%) saturate(7497%) hue-rotate(323deg) brightness(95%) contrast(104%);
+}
+
+.title{
+    color: aliceblue;
+}
+
+.instructions{
+    
+}

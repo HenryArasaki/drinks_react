@@ -1,38 +1,26 @@
-import { useState,useEffect } from 'react'
-import Header from './components/Header'
-import RecipeCard from './components/RecipeCard'
+import { useState } from 'react'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import styles from './style.module.css'
 
 
-function App() {
-  const [drinks, setDrinks] = useState([])
-  let temp = []
+import Home from './pages/Home'
+import Single from './pages/Single'
 
 
-
-  function handleFormSubmit(input) {
-    fetch(`https:www.thecocktaildb.com/api/json/v1/1/search.php?s=${input}`, { method: "GET" })
-      .then(response => response.json())
-      .then(data => {
-        setDrinks(data.drinks)
-      })
-    // .then(data => console.log(data.drinks))
-  }
-
+export default function App() {
 
 
   return (
-    <>
-      <Header onFormSubmit={handleFormSubmit} />
+    <BrowserRouter>
+      <Routes>
 
-      <div className={styles.container}>
-        <ul className={styles.list}>
-            {drinks.map((drink, index) => <li key={index}><RecipeCard drinkId={drink.idDrink} /></li>)}
-        </ul>
-    </div>
+        <Route exact path="/" element={<Home/>}/>
+        <Route path="/recipe/:id" element={<Single/>}/>
+        
 
-    </>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
-export default App
+
