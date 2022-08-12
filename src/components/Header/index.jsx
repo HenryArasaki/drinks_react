@@ -1,6 +1,6 @@
 import styles from './style.module.css'
-import Nav from '../Nav'
 import { useState } from 'react'
+
 
 export default function Header(props){
     const [input,setInput] = useState("")
@@ -17,10 +17,9 @@ export default function Header(props){
     return(
         <header className={styles.header}>
             <h1 className={styles.title}>Drinks React</h1>
-            <Nav />
-            <form onSubmit={handleFormSubmit}>
+            <form className={styles.form} onSubmit={handleFormSubmit}>
                 <input className={styles.input} type="text" name="search" id="search" onChange={handleInputChange} value={input}/>
-                <input type="submit" value="Enviar" />
+                <input className={styles.submit_btn}type="submit" value="Search" />
             </form>
         </header>
     )

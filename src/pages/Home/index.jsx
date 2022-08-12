@@ -3,12 +3,18 @@ import Header from '../../components/Header'
 import RecipeCard from '../../components/RecipeCard'
 import styles from './style.module.css'
 
-
 export default function Home() {
     const [drinks, setDrinks] = useState([])
-    let temp = []
 
-
+    useEffect(()=>{
+        if (drinks.length == 0){
+            fetch(`https:www.thecocktaildb.com/api/json/v1/1/random.php`, { method: "GET" })
+            .then(response => response.json())
+            .then(data => {
+                setDrinks([...data.drinks])
+            })
+        }
+    },[])
 
     function handleFormSubmit(input) {
         fetch(`https:www.thecocktaildb.com/api/json/v1/1/search.php?s=${input}`, { method: "GET" })
@@ -19,8 +25,6 @@ export default function Home() {
         // .then(data => console.log(data.drinks))
     }
 
-
-
     return (<>
         <Header onFormSubmit={handleFormSubmit} />
 
@@ -28,6 +32,7 @@ export default function Home() {
             <ul className={styles.list}>
                 {drinks ?
                     drinks.map((drink, index) => <li key={index}><RecipeCard drinkId={drink.idDrink} /></li>) :
+                    
                     <p>Not found</p>
                 }
             </ul>

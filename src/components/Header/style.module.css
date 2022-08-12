@@ -7,6 +7,7 @@
     top: 0;
     background-color: #0a0a0a;
     align-items: center;
+    justify-content: space-between;
 
     margin-bottom: 20px;
 
@@ -28,9 +29,22 @@
     background-position: -44px 4px;
     background-repeat: no-repeat;
     background-size:70% 70%;
+    color:#0a0a0a;
 }
 
 .input:focus{
     background-image:none;
 
+}
+
+.form{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.submit_btn{
+    color: #0a0a0a;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 18px;
 }

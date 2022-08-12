@@ -1,6 +1,8 @@
 import styles from './style.module.css'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Header from '../../components/Header'
+import {Link} from 'react-router-dom'
 
 import svg from "../../assets/loading_img.svg"
 
@@ -9,6 +11,7 @@ export default function Single() {
     const [isLoading, setIsLoading] = useState(true)
     const [recipe, setRecipe] = useState({})
     const [ingredients, setIngredients] = useState([])
+    const [instructions, setInstructions] = useState("")
 
 
 
@@ -19,28 +22,37 @@ export default function Single() {
             .finally(() => setIsLoading(false))
     }, [])
 
-    useEffect(()=>{
-        if(recipe){
-            {for(let i=0; i<15;i++){
-                if(recipe["strIngredient" + i])
-                setIngredients(prev =>[...prev, recipe["strIngredient" + i]])
-            }}
+    useEffect(() => {
+        if (recipe) {
+            {
+                for (let i = 0; i < 15; i++) {
+                    if (recipe["strIngredient" + i])
+                        setIngredients(prev => [...prev, recipe["strIngredient" + i]])
+                }
+            }
+            setInstructions(recipe.strInstructions)
         }
-    },[recipe])
+    }, [recipe])
 
     return (<>
+        <Header/>
         {isLoading ? <img src={svg} className={styles.loading_img} /> :
             <div className={styles.container}>
                 <div className={styles.name_and_img}>
                     <h2 className={styles.title}>{recipe.strDrink}</h2>
-                    <img src={recipe.strDrinkThumb} />
+                    <img className={styles.thumb} src={recipe.strDrinkThumb} />
                 </div>
                 <div className={styles.instructions}>
-                    <h3>Ingredients</h3>
-                    <ul>
-                        {ingredients.map((ingredient, index)=><li key={index}>{ingredient}</li>)}
-                    </ul>
+                    <div className={styles.texts}>
+                        <h3 className={styles.font_bigger}>Ingredients</h3>
+                        <ul>
+                            {ingredients.map((ingredient, index) => <li key={index}>{ingredient}</li>)}
+                        </ul>
+                        <h3 className={styles.font_bigger}>Instructions</h3>
+                        <p>{instructions}</p>
+                    </div>
                 </div>
+                <Link className={styles.btn_back} to="/">Go back</Link>
             </div>
         }
     </>)
