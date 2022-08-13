@@ -1,5 +1,6 @@
 import styles from './style.module.css'
 import { useState } from 'react'
+import {Link} from 'react-router-dom'
 
 
 export default function Header(props){
@@ -16,7 +17,7 @@ export default function Header(props){
 
     return(
         <header className={styles.header}>
-            <h1 className={styles.title}>Drinks React</h1>
+            <Link to="/" className={styles.title}>Drinks React</Link>
             <form className={styles.form} onSubmit={handleFormSubmit}>
                 <input className={styles.input} type="text" name="search" id="search" onChange={handleInputChange} value={input}/>
                 <input className={styles.submit_btn}type="submit" value="Search" />

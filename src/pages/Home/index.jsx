@@ -11,8 +11,44 @@ export default function Home() {
             fetch(`https:www.thecocktaildb.com/api/json/v1/1/random.php`, { method: "GET" })
             .then(response => response.json())
             .then(data => {
-                setDrinks([...data.drinks])
+                setDrinks(prev=>[...prev, data.drinks[0]])
             })
+            fetch(`https:www.thecocktaildb.com/api/json/v1/1/random.php`, { method: "GET" })
+            .then(response => response.json())
+            .then(data => {
+                setDrinks(prev=>[...prev, data.drinks[0]])
+            })
+            fetch(`https:www.thecocktaildb.com/api/json/v1/1/random.php`, { method: "GET" })
+            .then(response => response.json())
+            .then(data => {
+                setDrinks(prev=>[...prev, data.drinks[0]])
+            })
+            fetch(`https:www.thecocktaildb.com/api/json/v1/1/random.php`, { method: "GET" })
+            .then(response => response.json())
+            .then(data => {
+                setDrinks(prev=>[...prev, data.drinks[0]])
+            })
+            fetch(`https:www.thecocktaildb.com/api/json/v1/1/random.php`, { method: "GET" })
+            .then(response => response.json())
+            .then(data => {
+                setDrinks(prev=>[...prev, data.drinks[0]])
+            })
+            fetch(`https:www.thecocktaildb.com/api/json/v1/1/random.php`, { method: "GET" })
+            .then(response => response.json())
+            .then(data => {
+                setDrinks(prev=>[...prev, data.drinks[0]])
+            })
+            fetch(`https:www.thecocktaildb.com/api/json/v1/1/random.php`, { method: "GET" })
+            .then(response => response.json())
+            .then(data => {
+                setDrinks(prev=>[...prev, data.drinks[0]])
+            })
+            fetch(`https:www.thecocktaildb.com/api/json/v1/1/random.php`, { method: "GET" })
+            .then(response => response.json())
+            .then(data => {
+                setDrinks(prev=>[...prev, data.drinks[0]])
+            })
+
         }
     },[])
 
